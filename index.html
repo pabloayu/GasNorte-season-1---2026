@@ -3,133 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iRacing Dashboard - Season 1 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>iRacing S1 2026 - Road Series Dashboard</title>
     <style>
-        body { background-color: #0a192f; color: #e6f1ff; }
-        .card { background-color: #112240; border: 1px solid #233554; }
-        .table-header { background-color: #1d2d50; }
-        .zebra:nth-child(even) { background-color: #172a45; }
-        .lic-A { color: #54a0ff; border-top: 4px solid #54a0ff; }
-        .lic-B { color: #2ecc71; border-top: 4px solid #2ecc71; }
-        .lic-C { color: #feca57; border-top: 4px solid #feca57; }
-        .lic-D { color: #ff9f43; border-top: 4px solid #ff9f43; }
+        /* --- Tema Oscuro y Layout General --- */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a192f; /* Fondo Azul Oscuro */
+            color: #e6f1ff; /* Texto principal claro */
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #54a0ff; /* Color para destacar el título */
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        
+        /* --- Contenedor Principal (Dashboard Grid) --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* 2 columnas o más si hay espacio */
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* --- Estilo de Cada Tabla de Serie --- */
+        .series-container {
+            background-color: #172a45; /* Contenedor ligeramente más claro que el fondo */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 2px solid #54a0ff; /* Borde de contraste */
+        }
+
+        .series-title {
+            padding: 15px;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: black; /* Texto negro sobre el color de licencia */
+            text-align: center;
+        }
+
+        /* Colores de Licencia para los Títulos */
+        .lic-A { background-color: #54a0ff; } /* Azul */
+        .lic-B { background-color: #2ecc71; } /* Verde */
+        .lic-C { background-color: #feca57; } /* Amarillo */
+        .lic-D { background-color: #ff9f43; } /* Naranja */
+
+        /* --- Estilo de la Tabla --- */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #0a192f; /* Separador oscuro */
+        }
+        
+        .schedule-table th {
+            background-color: #112240; /* Color oscuro para encabezados de columna */
+            font-weight: bold;
+            color: #54a0ff; /* Texto azul claro */
+        }
+
+        .schedule-table tbody tr:nth-child(even) {
+            background-color: #112240; /* Raya oscura (zebra stripe) */
+        }
+
+        .schedule-table tbody tr:hover {
+            background-color: #2a6f87; /* Resaltar al pasar el ratón */
+            cursor: default;
+        }
+        
+        .week-cell {
+            text-align: center;
+            font-weight: bold;
+        }
+
     </style>
 </head>
-<body class="p-6">
+<body>
 
-    <header class="text-center mb-10">
-        <h1 class="text-4xl font-bold mb-2">iRacing Schedule Dashboard</h1>
-        <p class="text-blue-300 italic">Season 1 - 2026 | Series Destacadas</p>
-    </header>
+    <h1>iRacing Season 1 2026 - Road Series Schedule</h1>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+    <div class="dashboard-grid">
 
-        <div class="card p-4 rounded-xl shadow-lg lic-B">
-            <h2 class="text-xl font-bold mb-3 flex justify-between">
-                GT3 Challenge - Fixed <span>(Class B)</span>
-            </h2>
-            <table class="w-full text-sm text-left">
-                <thead class="table-header text-gray-300">
-                    <tr><th class="p-2">W</th><th class="p-2">Circuito</th><th class="p-2 text-right">Dur.</th></tr>
+        <div class="series-container">
+            <div class="series-title lic-B">GT3 Challenge (Fixed) - Clase B</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr class="zebra"><td class="p-2">1</td><td class="p-2">Navarra Speed</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">2</td><td class="p-2">COTA GP</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">3</td><td class="p-2">Silverstone GP</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">4</td><td class="p-2">Winton National</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">5</td><td class="p-2">Algarve GP</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">6</td><td class="p-2">Miami GP</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">7</td><td class="p-2">Oulton Park Int.</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">8</td><td class="p-2">Aragón GP</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">9</td><td class="p-2">Summit Point Main</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">10</td><td class="p-2">Suzuka East</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">11</td><td class="p-2">Mugello GP</td><td class="p-2 text-right">20m</td></tr>
-                    <tr class="zebra"><td class="p-2">12</td><td class="p-2">Adelaide Street</td><td class="p-2 text-right">20m</td></tr>
+                    <tr><td class="week-cell">1</td><td>Suzuka International Racing Course - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Road America - Road Course</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Hungaroring - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>Daytona International Speedway - Road Course</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Shell V-Power Motorsport Park (The Bend) - Intl. Circuit</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Circuit de Spa-Francorchamps - Combined</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Autódromo José Carlos Pace - Full Course</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>Mount Panorama Circuit (Bathurst)</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Circuito de Jerez - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Circuit Gilles Villeneuve</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Brands Hatch Circuit - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Algarve International Circuit - Grand Prix</td><td>20 mins</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="series-container">
+            <div class="series-title lic-A">IMSA iRacing Series - Clase A</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="week-cell">1</td><td>Daytona International Speedway - Road Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Lime Rock Park - International</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Circuit des 24 Heures du Mans</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>WeatherTech Raceway at Laguna Seca - Road Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Twin Ring Motegi - Motorcycle GP</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Virginia International Raceway - Full Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Road Atlanta - Full Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>Circuit of the Americas - Grand Prix</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Fuji International Speedway - Grand Prix</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Watkins Glen International - Boot</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Phillip Island Circuit - Moto</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Nürburgring Combined - Gesamstrecke VLN</td><td>45 mins</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="series-container">
+            <div class="series-title lic-C">Formula C (F3) - Open - Clase C</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="week-cell">1</td><td>Virginia International Raceway - Full Course</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Nürburgring Combined - Gesamtstrecke VLN</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Hockenheimring - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>Daytona International Speedway - Road Course</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Shell V-Power Motorsport Park (The Bend) - West Circuit</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Suzuka International Racing Course - Historic</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Circuit de Barcelona Catalunya - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>Miami International - Grand Prix</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Mount Panorama Circuit (Bathurst)</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Autódromo Hermanos Rodríguez - Grand Prix Historic</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Silverstone Circuit - 2008</td><td>20 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Phillip Island Circuit</td><td>20 mins</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="card p-4 rounded-xl shadow-lg lic-A">
-            <h2 class="text-xl font-bold mb-3 flex justify-between">
-                IMSA iRacing Series <span>(Class A)</span>
-            </h2>
-            <table class="w-full text-sm text-left">
-                <thead class="table-header text-gray-300">
-                    <tr><th class="p-2">W</th><th class="p-2">Circuito</th><th class="p-2 text-right">Dur.</th></tr>
+        <div class="series-container">
+            <div class="series-title lic-D">FIA F4 Challenge (Fixed) - Clase D</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr class="zebra"><td class="p-2">1</td><td class="p-2">Fuji Int.</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">2</td><td class="p-2">Le Mans</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">3</td><td class="p-2">Interlagos</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">4</td><td class="p-2">Watkins Glen</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">5</td><td class="p-2">Motegi GP</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">6</td><td class="p-2">Sebring Int.</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">7</td><td class="p-2">Daytona Road</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">8</td><td class="p-2">Spa-Francorchamps</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">9</td><td class="p-2">Aragón GP</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">10</td><td class="p-2">Road Atlanta</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">11</td><td class="p-2">Hockenheimring GP</td><td class="p-2 text-right">45m</td></tr>
-                    <tr class="zebra"><td class="p-2">12</td><td class="p-2">COTA GP</td><td class="p-2 text-right">45m</td></tr>
+                    <tr><td class="week-cell">1</td><td>Circuito de Navarra - Speed</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Circuit of the Americas - GP</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Silverstone - GP</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>Winton Motor Raceway - National</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Algarve International - GP</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Miami International - GP</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Oulton Park - International</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>MotorLand Aragón - GP</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Summit Point - Main</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Suzuka - East</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Mugello - GP</td><td>15 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Adelaide Street Circuit</td><td>15 mins</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="series-container">
+            <div class="series-title lic-C">Advanced Mazda MX-5 Cup - Clase C</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="week-cell">1</td><td>Virginia International Raceway - Full Course</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Okayama International Circuit - Full Course</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Nürburgring Nordschleife - Industriefahrten</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>WeatherTech Raceway at Laguna Seca - Road Course</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Mount Panorama Circuit</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Daytona International Speedway - Road Course</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Miami International - Grand Prix Pits</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>Circuit de Spa-Francorchamps - Grand Prix</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Autódromo José Carlos Pace - Grand Prix</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Red Bull Ring - Grand Prix</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Adelaide Street Circuit</td><td>30 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Summit Point Raceway</td><td>30 mins</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="series-container">
+            <div class="series-title lic-B">GT Sprint Series - Clase B</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="week-cell">1</td><td>Virginia International Raceway - Full Course</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Nürburgring Combined - Gesamtstrecke VLN</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Hockenheimring - Grand Prix</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>Daytona International Speedway - Road Course</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Shell V-Power Motorsport Park (The Bend) - International</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Suzuka International Racing Course - Combined</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Circuit de Barcelona Catalunya - Full Course</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>Miami International - Grand Prix</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Mount Panorama Circuit (Bathurst)</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Autódromo Internacional do Algarve - Grand Prix (Portimão)</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Silverstone Circuit - International</td><td>40 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Phillip Island Circuit</td><td>40 mins</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="card p-4 rounded-xl shadow-lg lic-D">
-            <h2 class="text-xl font-bold mb-3 flex justify-between">
-                FIA F4 Challenge <span>(Class D)</span>
-            </h2>
-            <table class="w-full text-sm text-left">
-                <thead class="table-header text-gray-300">
-                    <tr><th class="p-2">W</th><th class="p-2">Circuito</th><th class="p-2 text-right">Dur.</th></tr>
+        <div class="series-container">
+            <div class="series-title lic-C">iRacing Porsche Cup - Clase C</div>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Semana</th>
+                        <th style="width: 60%;">Circuito</th>
+                        <th style="width: 25%;">Duración</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr class="zebra"><td class="p-2">1</td><td class="p-2">Navarra Speed</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">2</td><td class="p-2">COTA GP</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">3</td><td class="p-2">Silverstone GP</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">4</td><td class="p-2">Winton National</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">5</td><td class="p-2">Algarve GP</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">6</td><td class="p-2">Miami GP</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">7</td><td class="p-2">Oulton Park Int.</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">8</td><td class="p-2">Aragón GP</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">9</td><td class="p-2">Summit Point Main</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">10</td><td class="p-2">Suzuka East</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">11</td><td class="p-2">Mugello GP</td><td class="p-2 text-right">15m</td></tr>
-                    <tr class="zebra"><td class="p-2">12</td><td class="p-2">Adelaide Street</td><td class="p-2 text-right">15m</td></tr>
+                    <tr><td class="week-cell">1</td><td>Daytona International Speedway - Road Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">2</td><td>Nürburgring Combined - Gesamtstrecke 24h</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">3</td><td>Autódromo José Carlos Pace - Grand Prix (Interlagos)</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">4</td><td>Circuit des 24 Heures du Mans</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">5</td><td>Virginia International Raceway - Full Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">6</td><td>Road Atlanta - Full Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">7</td><td>Watkins Glen International - Grand Prix</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">8</td><td>Circuit of the Americas - Road Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">9</td><td>Fuji International Speedway - International</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">10</td><td>Road America - Full Course</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">11</td><td>Phillip Island Circuit</td><td>45 mins</td></tr>
+                    <tr><td class="week-cell">12</td><td>Nürburgring Combined - Gesamstrecke VLN</td><td>45 mins</td></tr>
                 </tbody>
             </table>
         </div>
-
-        <div class="card p-4 rounded-xl shadow-lg lic-C">
-            <h2 class="text-xl font-bold mb-3 flex justify-between">
-                Porsche Cup <span>(Class C)</span>
-            </h2>
-            <table class="w-full text-sm text-left">
-                <thead class="table-header text-gray-300">
-                    <tr><th class="p-2">W</th><th class="p-2">Circuito</th><th class="p-2 text-right">Coche</th></tr>
-                </thead>
-                <tbody>
-                    <tr class="zebra"><td class="p-2">1</td><td class="p-2">Fuji Int.</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">2</td><td class="p-2">Hockenheim GP</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">3</td><td class="p-2">Nürburgring 24h</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">4</td><td class="p-2">Interlagos GP</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">5</td><td class="p-2">Le Mans</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">6</td><td class="p-2">Okayama Full</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">7</td><td class="p-2">Oschersleben GP</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">8</td><td class="p-2">Watkins Glen</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">9</td><td class="p-2">Zandvoort GP</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">10</td><td class="p-2">Mugello GP</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">11</td><td class="p-2">Phillip Island</td><td class="p-2 text-right">911 GT3</td></tr>
-                    <tr class="zebra"><td class="p-2">12</td><td class="p-2">Spa GP</td><td class="p-2 text-right">911 GT3</td></tr>
-                </tbody>
-            </table>
-        </div>
-
+        
     </div>
-
-    <footer class="mt-12 text-center text-gray-500 text-sm">
-        Actualizado para Season 1 2026 | iRacing Community Data
-    </footer>
+    
+    <p style="text-align: center; margin-top: 30px; font-size: 0.8em; color: #556075;">
+        Fuente de datos: iRacing Season 1 2026 Schedule.
+    </p>
 
 </body>
 </html>
